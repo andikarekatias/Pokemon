@@ -32,7 +32,7 @@ function App() {
   };
 
   return (
-    <div className="w-2/4 mx-auto text-center m-2">
+    <div className="lg:w-2/4 mx-auto text-center m-2">
       <h1 className='text-2xl'>{data.count} Pokemon </h1>
       <h2>My react learning project</h2>
       <div className="overflow-x-auto m-2">
