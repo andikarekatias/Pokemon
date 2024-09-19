@@ -10,7 +10,7 @@ interface Pokemon {
 function App() {
   const navigate = useNavigate({ from: '/' });
   const searchParams = indexRoute.useSearch();
-  const page = parseInt(searchParams.page.toString() ?? "1");
+  const page = searchParams.page ?? 1;
   const itemPerPage = 20;
   const pageOffset = (page - 1) * itemPerPage;
   
@@ -27,7 +27,7 @@ function App() {
 
   const goToPage = (newPage: number) => {
     navigate({
-      search: { page: newPage.toString() }
+      search: { page: newPage }
     });
   };
 
