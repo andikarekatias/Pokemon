@@ -3,12 +3,12 @@ const navlink = () => {
   return (
     <>
         <li>
-            <Link to="/" search={{ page: 1}} className="[&.active]:font-bold">
+            <Link to="/" search={{ page: 1}} className="outline outline-1 [&.active]:font-bold m-1">
                 Pokemon
             </Link>
         </li>
         <li>
-            <a href="https://andikarekatias.com">
+            <a className="outline outline-1 m-1" href="https://andikarekatias.com">
                 Andika Rekatias
             </a>
         </li>

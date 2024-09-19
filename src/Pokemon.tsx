@@ -13,16 +13,16 @@ const Pokemon = () => {
   );
 
   if (error) return <div>failed to load</div>;
-  if (isLoading) return 
-    <div className='w-96 mx-auto m-2'>
+  if (isLoading) return (
+    <div className='w-96 flex flex-col gap-4 mx-auto m-2'>
         <div className="skeleton h-4 w-full"></div>
         <div className="skeleton h-4 w-full"></div>
         <div className="skeleton h-4 w-full"></div>
         <div className="skeleton h-4 w-full"></div>
-    </div>;
+    </div>);
 
     const goBack = () => {
-        window.history.back(); // This uses the browser's back functionality
+        window.history.back();
     };
 
   
@@ -42,7 +42,7 @@ const Pokemon = () => {
                     <span key={typeObj.type.name} className='badge badge-outline'>{typeObj.type.name} </span>
                   ))}</p>
                 <div className="card-actions justify-end">
-                  <button className="btn btn-primary" onClick={goBack}>Back</button>
+                  <button className="btn btn-neutral hover:bg-base-100 hover:text-black" onClick={goBack}>Back</button>
                 </div>
             </div>
         </div>
