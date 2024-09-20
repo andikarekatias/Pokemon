@@ -1,3 +1,7 @@
+[Live Demo](https://pokemon.andikarekatias.com)
+
+[![Netlify Status](https://api.netlify.com/api/v1/badges/4d54c71e-d269-4a31-b494-c47c1deff74d/deploy-status)](https://app.netlify.com/sites/taupe-souffle-753f42/deploys)
+
 # React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
