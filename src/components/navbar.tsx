@@ -6,35 +6,40 @@ const Navbar = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);
 
   useEffect(() => {    
-    const darkModeMediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
-    const initialDarkMode = darkModeMediaQuery.matches;
-    setIsDarkMode(initialDarkMode);    
-    if (initialDarkMode) {
-      document.documentElement.setAttribute("data-theme", "dark");
+    const savedTheme = localStorage.getItem("theme");
+    if (savedTheme) {
+      setIsDarkMode(savedTheme === "dark");
+      document.documentElement.setAttribute("data-theme", savedTheme);
+      document.documentElement.classList.toggle("dark", savedTheme === "dark");
     } else {
-      document.documentElement.setAttribute("data-theme", "garden");
-    }    
-    const handleChange = (e: MediaQueryListEvent) => {
-      const isDark = e.matches;
-      setIsDarkMode(isDark);
-      if (isDark) {
-        document.documentElement.setAttribute("data-theme", "dark");
-      } else {
-        document.documentElement.setAttribute("data-theme", "garden");
-      }
-    };
-
-    darkModeMediaQuery.addEventListener("change", handleChange);    
-    return () => darkModeMediaQuery.removeEventListener("change", handleChange);
+      const darkModeMediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+      const initialDarkMode = darkModeMediaQuery.matches;
+      setIsDarkMode(initialDarkMode);
+      const theme = initialDarkMode ? "dark" : "garden";
+      document.documentElement.setAttribute("data-theme", theme);
+      document.documentElement.classList.toggle("dark", initialDarkMode);
+      localStorage.setItem("theme", theme);
+      
+      const handleChange = (e: MediaQueryListEvent) => {
+        const isDark = e.matches;
+        const theme = isDark ? "dark" : "garden";
+        setIsDarkMode(isDark);
+        document.documentElement.setAttribute("data-theme", theme);
+        document.documentElement.classList.toggle("dark", isDark);
+        localStorage.setItem("theme", theme);
+      };
+      
+      darkModeMediaQuery.addEventListener("change", handleChange);
+      return () => darkModeMediaQuery.removeEventListener("change", handleChange);
+    }
   }, []);
 
   const handleThemeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.checked) {
-      document.documentElement.setAttribute("data-theme", "dark");
-    } else {
-      document.documentElement.setAttribute("data-theme", "garden");
-    }
+    const theme = e.target.checked ? "dark" : "garden";
+    document.documentElement.setAttribute("data-theme", theme);
+    document.documentElement.classList.toggle("dark", e.target.checked);
     setIsDarkMode(e.target.checked);
+    localStorage.setItem("theme", theme);
   };
 
   return (
