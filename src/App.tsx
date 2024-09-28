@@ -88,15 +88,22 @@ function App() {
             </tr>
           </thead>
           <tbody>
-            {paginatedResults.map((item: Pokemon) => (
-              <tr key={item.name}>
-                <td className='text-center hover:bg-neutral hover:text-white'>
-                  <Link to={`/pokemon/${item.name}`} className='items-center capitalize'>
-                    {item.name}
-                  </Link>
-                </td>
-              </tr>
-            ))}
+            { paginatedResults.length > 0 ? (
+              paginatedResults.map((item: Pokemon) => (
+                <tr key={item.name}>
+                  <td className='text-center hover:bg-neutral hover:text-white'>
+                    <Link to={`/pokemon/${item.name}`} className='items-center capitalize'>
+                      {item.name}
+                    </Link>
+                  </td>
+                </tr>
+              ))
+              ) : (
+                <tr>
+                  <td className='text-center'>No Pokémon found</td>
+                </tr>
+                )
+            }
           </tbody>
         </table>
 
