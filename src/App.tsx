@@ -52,7 +52,7 @@ function App() {
 
   const goToPage = (newPage: number) => {
     navigate({
-      search: { page: newPage, name: searchName }
+      search: { page: newPage }
     });
   };
 

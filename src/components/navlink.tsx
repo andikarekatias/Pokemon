@@ -3,7 +3,7 @@ const navlink = () => {
   return (
     <>
         <li>
-            <Link to="/" search={{ page: 1, name: ""}} className="outline outline-1 [&.active]:font-bold m-1">
+            <Link to="/" search={{ page: undefined, name: undefined}} className="outline outline-1 [&.active]:font-bold m-1">
                 Pokemon
             </Link>
         </li>

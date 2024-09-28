@@ -8,8 +8,8 @@ const rootRoute = createRootRoute({
 });
 
 type PokemonSearch = {
-  page: number;
-  name: string;
+  page?: number;
+  name?: string;
 };
 
 export const indexRoute = createRoute({
@@ -18,8 +18,8 @@ export const indexRoute = createRoute({
   component: () => <IndexPage />,
   validateSearch: (search: Record<string, unknown>): PokemonSearch => {
     return {
-      page: Number(search.page ?? 1),
-      name: String(search.name ?? ""),
+      page: search.page ? Number(search.page) : undefined,
+      name: search.name ? String(search.name ?? "") : undefined,
     };
   },
 });
